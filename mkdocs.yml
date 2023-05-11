@@ -9,7 +9,6 @@ theme:
     primary: deep purple
     accent: deep orange
   features:
-    - navigation.sections
     - navigation.expand
     - navigation.path
     - toc.integrate
