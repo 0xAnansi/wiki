@@ -26,7 +26,7 @@ markdown_extensions:
     - pymdownx.tasklist
     - pymdownx.emoji
     - admonition
-    - toc:
+    - toc.integrate
 permalink: true
 plugins:
     - search
