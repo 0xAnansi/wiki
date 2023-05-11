@@ -1,24 +1,40 @@
-# Prerequisites
+# Hosting a python bot on a VPS
+## Table of content
+- [[#Prerequisites|Prerequisites]]
+- [[#Notes|Notes]]
+- [[#A few Linux commands, helps and references|A few Linux commands, helps and references]]
+- [[#Preparing the host|Preparing the host]]
+	- [[#Preparing the host#Connect to the host with the provided account|Connect to the host with the provided account]]
+		- [[#Connect to the host with the provided account#Windows|Windows]]
+		- [[#Connect to the host with the provided account#Linux & Mac|Linux & Mac]]
+	- [[#Preparing the host#Update the host|Update the host]]
+		- [[#Update the host#Create a less privileged user|Create a less privileged user]]
+	- [[#Preparing the host#Testing the new account|Testing the new account]]
+- [[#Install the software|Install the software]]
+	- [[#Install the software#Install the python environment manager|Install the python environment manager]]
+	- [[#Install the software#Install a script|Install a script]]
+		- [[#Install a script#Transfer your script to the host|Transfer your script to the host]]
+		- [[#Install a script#Setting up a script|Setting up a script]]
+			- [[#Setting up a script#Setting up the virtual environment|Setting up the virtual environment]]
+			- [[#Setting up a script#Setting up the actual script|Setting up the actual script]]
+	- [[#Install the software#Running the script in background|Running the script in background]]
 
+## Prerequisites
 To be able to follow this tutorial, you will need:
-- A hosting provider (VPS, dedicated server, raspi in your local network, etc.)
-- Remote access to a host
-- Root access to a host
-- A script to run
-- To be able to connect to the host, you will need a SSH client. For Linux and Mac, it's native. For Windows, there are several alternatives, the most popular being https://putty.org/. A good solution, for ease of use, is to use a terminal manager such as https://mremoteng.org/ (open source).
-- A SFTP client, optional, if your code is not in a git repo (https://filezilla-project.org/download.php?type=clientis crossplatform for example)
+* A hosting provider (VPS, dedicated server, raspi in your local network, etc.)
+* Remote access to a host
+* Root access to a host
+* A script to run
+* To be able to connect to the host, you will need a SSH client. For Linux and Mac, it's native. For Windows, there are several alternatives, the most popular being https://putty.org/. A good solution, for ease of use, is to use a terminal manager such as https://mremoteng.org/ (open source).
+* A SFTP client, optional, if your code is not in a git repo (https://filezilla-project.org/download.php?type=clientis crossplatform for example)
 
 In the following tutorial, the following variables will be used:
 - [root_user] : the root user initially provided by your hosting provider
 - [sudo_account] : the user you created following the tutorial
 - [server_ip] : the IP of your server
-
-# Notes
-
+## Notes
 This tutorial will consider that the host is provided with a debian or debian based distribution.
-
-# A few Linux commands, helps and references
-
+## A few Linux commands, helps and references
 A QWERTY layout:
 
 ![[Pasted image 20230510215028.png]]
@@ -40,17 +56,11 @@ A QWERTY layout:
 | tail -n 250 | Display the last 250 lines of a file (useful to check logs) | `tail -n 250 ./output.log` |
 | nano        | Edit a file                                                 | `nano ./main.py`           |
 | nohup       | Run a command without needing a shell                       | `nohup ./main.py`                           |
-
-# Preparing the host
-
-## Connect to the host with the provided account
-
-### Windows
-
+## Preparing the host
+### Connect to the host with the provided account
+#### Windows
 TBD, but do the same thing as below using your client of choice pretty much
-
-### Linux & Mac
-
+#### Linux & Mac
 Open a terminal and type the following command:
 
 ```shell
@@ -65,9 +75,7 @@ If everything goes right, you will be greeted by what is called a banner.
 Below that, you'll have access to your server's shell (which might not look like the screenshot, but the idea is there)
 
 ![[Pasted image 20230510195152.png]]
-
-## Update the host
-
+### Update the host
 Before anything, we'll ensure that the host is up to date.
 
 ```shell
@@ -107,9 +115,7 @@ The following packages were automatically installed and are no longer required:
 Use 'sudo apt autoremove' to remove them.
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 ```
-
-### Create a less privileged user
-
+#### Create a less privileged user
 Since connecting using a root account is a *very bad practice*, we will be creating a user account that you will use for the rest of the tutorial.
 
 Run the following command to create a new user:
@@ -147,9 +153,7 @@ $ usermod -aG sudo [sudo_user]
 ```
 
 This should be enough to allow ssh connections.
-
-## Testing the new account
-
+### Testing the new account
 Repeat the chapter [[Hosting a python bot on a VPS#Connect to the host with the provided account]] using the new account information.
 
 If everything is ok, disconnect from the previous ssh session that is using [root_user] by typing in the console:
@@ -157,11 +161,8 @@ If everything is ok, disconnect from the previous ssh session that is using [roo
 ```shell
 $ exit
 ```
-
-# Install the software
-
-## Install the python environment manager
-
+## Install the software
+### Install the python environment manager
 Because python is a clusterfuck and to avoid bricking the system, we will be using a virtual environment manager for python, that will make you able to have a dedicated version of python for each script that you use. 
 
 That avoids conflicts, and makes everything smoother in the long run.
@@ -219,19 +220,16 @@ Create the working directory where you'll upload your scripts:
 ```shell
 $ mkdir ~/scripts
 ```
-
-## Install a script
-
-### Transfer your script to the host
-
+### Install a script
+#### Transfer your script to the host
 If you're using a git repository, I will consider that you know how to clone a repo.
 This part is for people that have the code on their computer and need to transfer it to the host.
 
 For this, you will need to use your SFTP client, setup as follow:
-- Host: sftp://[server_ip]
-- Username: [sudo_user]
-- Password: [sudo_user_password]
-- Port: 22
+* Host: sftp://[server_ip]
+* Username: [sudo_user]
+* Password: [sudo_user_password]
+* Port: 22
 
 If something asks you if you trust this host, say yes.
 
@@ -242,11 +240,8 @@ If you use Filezilla, it'll look something like:
 On the left side, you'll see your computer's content, on the right side, you'll see the server.
 
 Transfer your scripts into separate folders on the server, in the /home/[sudo_user]/scripts/MyBot directory that was created earlier (you can drag and drop).
-
-### Setting up a script
-
-#### Setting up the virtual environment
-
+#### Setting up a script
+##### Setting up the virtual environment
 For better comprehension, the following part will consider that your script is in the */home/user/scripts/MyBot* directory, and has a starting point in the file *main.py*
 
 Enter the working directory:
@@ -273,9 +268,7 @@ You should see something like *(venv_MyBot)* preceding your shell, which mean th
 For example, on my specific shell (which is customized), it looks like:
 
 ![[Pasted image 20230510210539.png]]
-
-#### Setting up the actual script
-
+##### Setting up the actual script
 Now, you should be able to run your script! (maybe)
 
 Run the following command:
@@ -319,9 +312,7 @@ The command to install from the requirements.txt is, for information (don't need
 ```shell
 (venv_MyBot) $ pip3 install -r requirements.txt
 ```
-
-## Running the script in background
-
+### Running the script in background
 > **Warning**
 >
 > Make sure that you have activated the virtual env before running the command below, especially after connecting in a new session.
