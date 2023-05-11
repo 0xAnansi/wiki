@@ -1,3 +1,11 @@
+---
+title: Hosting a python bot on a VPS
+summary: This is a tutorial explaining how to configure a newly rented VPS to host a python script that needs to be running constantly.
+authors: A. Nansi
+date: 2023-05-10
+tags: python, vps, hosting, server, script
+---
+
 # Hosting a python bot on a VPS
 ## Prerequisites
 To be able to follow this tutorial, you will need:
