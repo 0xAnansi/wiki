@@ -1,17 +1,24 @@
-image: python:3.8-slim
-
-pages:
-  stage: deploy
-  script:
-    # Install all of the python packages for mkdocs
-    - pip install -r requirements.txt
-    # Build the site using mkdocs
-    # --strict aborts the build on any warnings
-    # --verbose enables verbose output so that it's easier to see what mkdocs is doing
-    # neither --strict nor --verbose are necessary if you choose not to use them
-    - mkdocs build --strict --verbose
-  artifacts:
-    paths:
-      - public
-  only:
-    - main
+name: ci
+on:
+  push:
+    branches:
+      - master
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - run: pip install mkdocs-material
+      - run: pip install mkdocs-roamlinks-plugin
+      # - run: pip install mkdocs-mermaid2-plugin
+      - run: mkdocs gh-deploy --force
