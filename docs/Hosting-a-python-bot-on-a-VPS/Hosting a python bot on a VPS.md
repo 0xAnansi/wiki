@@ -1,24 +1,5 @@
 # Hosting a python bot on a VPS
 ## Table of content
-- [[#Prerequisites|Prerequisites]]
-- [[#Notes|Notes]]
-- [[#A few Linux commands, helps and references|A few Linux commands, helps and references]]
-- [[#Preparing the host|Preparing the host]]
-	- [[#Preparing the host#Connect to the host with the provided account|Connect to the host with the provided account]]
-		- [[#Connect to the host with the provided account#Windows|Windows]]
-		- [[#Connect to the host with the provided account#Linux & Mac|Linux & Mac]]
-	- [[#Preparing the host#Update the host|Update the host]]
-		- [[#Update the host#Create a less privileged user|Create a less privileged user]]
-	- [[#Preparing the host#Testing the new account|Testing the new account]]
-- [[#Install the software|Install the software]]
-	- [[#Install the software#Install the python environment manager|Install the python environment manager]]
-	- [[#Install the software#Install a script|Install a script]]
-		- [[#Install a script#Transfer your script to the host|Transfer your script to the host]]
-		- [[#Install a script#Setting up a script|Setting up a script]]
-			- [[#Setting up a script#Setting up the virtual environment|Setting up the virtual environment]]
-			- [[#Setting up a script#Setting up the actual script|Setting up the actual script]]
-	- [[#Install the software#Running the script in background|Running the script in background]]
-
 ## Prerequisites
 To be able to follow this tutorial, you will need:
 
@@ -34,6 +15,7 @@ In the following tutorial, the following variables will be used:
 - [root_user] : the root user initially provided by your hosting provider
 - [sudo_account] : the user you created following the tutorial
 - [server_ip] : the IP of your server
+
 ## Notes
 This tutorial will consider that the host is provided with a debian or debian based distribution.
 ## A few Linux commands, helps and references
