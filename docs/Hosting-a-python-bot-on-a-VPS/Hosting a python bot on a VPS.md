@@ -21,12 +21,13 @@
 
 ## Prerequisites
 To be able to follow this tutorial, you will need:
-* A hosting provider (VPS, dedicated server, raspi in your local network, etc.)
-* Remote access to a host
-* Root access to a host
-* A script to run
-* To be able to connect to the host, you will need a SSH client. For Linux and Mac, it's native. For Windows, there are several alternatives, the most popular being https://putty.org/. A good solution, for ease of use, is to use a terminal manager such as https://mremoteng.org/ (open source).
-* A SFTP client, optional, if your code is not in a git repo (https://filezilla-project.org/download.php?type=clientis crossplatform for example)
+
+- A hosting provider (VPS, dedicated server, raspi in your local network, etc.)
+- Remote access to a host
+- Root access to a host
+- A script to run
+- To be able to connect to the host, you will need a SSH client. For Linux and Mac, it's native. For Windows, there are several alternatives, the most popular being https://putty.org/. A good solution, for ease of use, is to use a terminal manager such as https://mremoteng.org/ (open source).
+- A SFTP client, optional, if your code is not in a git repo (https://filezilla-project.org/download.php?type=clientis crossplatform for example)
 
 In the following tutorial, the following variables will be used:
 - [root_user] : the root user initially provided by your hosting provider
