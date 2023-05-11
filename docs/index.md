@@ -2,7 +2,7 @@
 
 This is my new sandbox.
 
-**List of tutorials:**
+Under construction.
 
-*  [[docs/Tutorials/index|Hosting a python bot on a VPS]]
+
 
