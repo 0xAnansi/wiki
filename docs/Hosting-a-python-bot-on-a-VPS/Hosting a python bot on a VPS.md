@@ -40,6 +40,7 @@ A QWERTY layout:
 | tail -n 250 | Display the last 250 lines of a file (useful to check logs) | `tail -n 250 ./output.log` |
 | nano        | Edit a file                                                 | `nano ./main.py`           |
 | nohup       | Run a command without needing a shell                       | `nohup ./main.py`                           |
+
 ## Preparing the host
 ### Connect to the host with the provided account
 #### Windows
