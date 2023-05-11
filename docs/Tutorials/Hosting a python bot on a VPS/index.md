@@ -146,7 +146,7 @@ $ usermod -aG sudo [sudo_user]
 
 This should be enough to allow ssh connections.
 ### Testing the new account
-Repeat the chapter [[Hosting a python bot on a VPS#Connect to the host with the provided account]] using the new account information.
+Repeat the chapter [[#Connect to the host with the provided account]] using the new account information.
 
 If everything is ok, disconnect from the previous ssh session that is using [root_user] by typing in the console:
 
