@@ -23,7 +23,7 @@ markdown_extensions:
     - pymdownx.emoji
     - admonition
     - toc:
-    permalink: true
+permalink: true
 plugins:
     - search
     - roamlinks
