@@ -1,5 +1,4 @@
 # Hosting a python bot on a VPS
-## Table of content
 ## Prerequisites
 To be able to follow this tutorial, you will need:
 

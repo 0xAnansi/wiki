@@ -13,11 +13,11 @@ theme:
     accent: deep orange
   features:
     - navigation.sections
-	- navigation.expand
-	- navigation.path
-	- navigation.indexes
-	- toc.integrate
-	- navigation.top
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - toc.integrate
+    - navigation.top
 # Extensions
 markdown_extensions:
     - footnotes
