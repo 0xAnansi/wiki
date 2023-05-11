@@ -9,22 +9,22 @@ theme:
   name: material
   palette:
     scheme: slate
-	primary: deep purple
-	accent: deep orange
+    primary: deep purple
+    accent: deep orange
 # Extensions
 markdown_extensions:
-  - footnotes
-  - attr_list
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - pymdownx.details
-  - pymdownx.magiclink
-  - pymdownx.tasklist
-  - pymdownx.emoji
-  - admonition
-  - toc:
+    - footnotes
+    - attr_list
+    - pymdownx.highlight
+    - pymdownx.superfences
+    - pymdownx.details
+    - pymdownx.magiclink
+    - pymdownx.tasklist
+    - pymdownx.emoji
+    - admonition
+    - toc:
     permalink: true
 plugins:
-  - search
-  - roamlinks
+    - search
+    - roamlinks
 
