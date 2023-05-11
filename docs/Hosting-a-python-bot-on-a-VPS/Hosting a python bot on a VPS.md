@@ -30,6 +30,7 @@ To be able to follow this tutorial, you will need:
 - A SFTP client, optional, if your code is not in a git repo (https://filezilla-project.org/download.php?type=clientis crossplatform for example)
 
 In the following tutorial, the following variables will be used:
+
 - [root_user] : the root user initially provided by your hosting provider
 - [sudo_account] : the user you created following the tutorial
 - [server_ip] : the IP of your server
@@ -227,6 +228,7 @@ If you're using a git repository, I will consider that you know how to clone a r
 This part is for people that have the code on their computer and need to transfer it to the host.
 
 For this, you will need to use your SFTP client, setup as follow:
+
 * Host: sftp://[server_ip]
 * Username: [sudo_user]
 * Password: [sudo_user_password]
