@@ -11,7 +11,7 @@ theme:
   features:
     - navigation.expand
     - navigation.path
-    - toc.integrate
+    - navigation.indexes 
     - navigation.top
 # Extensions
 markdown_extensions:
