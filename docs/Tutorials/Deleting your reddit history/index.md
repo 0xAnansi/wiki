@@ -59,7 +59,7 @@ Note that Redact is free, but is not open-source, so use at your own risks.
 
 Why Redact? Because it has the useful feature of being able to take the archive sent by reddit directly as input to clear your reddit account. It's also available on all the existing OS that I can think of, so no matter if you want to do it by phone, from windows, mac or linux, a client is available.
 
-### Configuring the reddit removal service
+### Setting up the reddit removal service
 
 Pick the reddit service and click on "Add account". This will bring the login page where you need to log-in to the account you want to delete data from.
 
@@ -71,7 +71,7 @@ Once logged-in, you will need to authorize Redact to access your data through yo
 
 And that's it!
 
-## Starting the removal of your data
+### Configuring the removal of your data
 
 You have a lot of option concerning the time period you want your data deleted.
 
@@ -119,7 +119,10 @@ We are now done with the configuration.
 We can either check if this is right by running a "Preview Mode" run, or yoloing and directly delete everything.
 
 ![[Pasted image 20230614170246.png]]
+
 Then, start the process.
+
+### Starting the deletion
 
 ![[Pasted image 20230614170303.png]]
 
