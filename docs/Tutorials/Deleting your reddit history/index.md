@@ -7,6 +7,7 @@ tags: reddit, redact, privacy, spez, api
 ---
 
 # How to delete your reddit history
+
 ## Introduction
 
 The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limitation making you able to remove only the last 1000 messages that you made.
@@ -59,6 +60,7 @@ Note that Redact is free, but is not open-source, so use at your own risks.
 Why Redact? Because it has the useful feature of being able to take the archive sent by reddit directly as input to clear your reddit account. It's also available on all the existing OS that I can think of, so no matter if you want to do it by phone, from windows, mac or linux, a client is available.
 
 ### Configuring the reddit removal service
+
 Pick the reddit service and click on "Add account". This will bring the login page where you need to log-in to the account you want to delete data from.
 
 ![[Screenshot_787.png]]
@@ -72,12 +74,14 @@ And that's it!
 ## Starting the removal of your data
 
 You have a lot of option concerning the time period you want your data deleted.
+
 ![[Pasted image 20230614165306.png]]
 
 For this use, I would advise using "Relative Date", from "All time" to "3 months ago".
 This will remove your historical data while keeping your most recent activity you're most likely to be replied to.
 
 In the "Comments" section, you will notice this option:
+
 ![[Pasted image 20230614165527.png]]
 
 This is where you put the archive that you got from Reddit.
@@ -92,6 +96,7 @@ In the section "Action to take", pick "Edit comments". This will edit with garba
 ![[Pasted image 20230614165845.png]]
 
 In "Custom Edit Text" you can enter what you want your comment to be replaced with if random text is not to your liking.
+
 You can use any of the community approved ones such as, but not limited to:
 - Fuck Spez
 - Due to the changes in the API limitations and access, this comment has been removed from reddit
@@ -106,6 +111,7 @@ You can also specify karma upper and lower limit to delete, but for this, we'll 
 ![[Pasted image 20230614170125.png]]
 
 You can also select your comments through wordlist, but once again, this is not our case.
+
 ![[Pasted image 20230614170202.png]]
 
 We are now done with the configuration.
@@ -122,7 +128,7 @@ And accept that Redact will not be responsible if you deleted the secret nuclear
 
 This will now run for as long as needed to remove everything.
 
-# TL;DR
+## TL;DR
 
 - Get your data archive from https://www.reddit.com/settings/data-request
 - Put it in https://redact.dev/
