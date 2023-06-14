@@ -120,6 +120,7 @@ We can either check if this is right by running a "Preview Mode" run, or yoloing
 
 ![[Pasted image 20230614170246.png]]
 Then, start the process.
+
 ![[Pasted image 20230614170303.png]]
 
 And accept that Redact will not be responsible if you deleted the secret nuclear launch codes that you transferred from your toilets to a comment on Reddit.
@@ -129,7 +130,6 @@ And accept that Redact will not be responsible if you deleted the secret nuclear
 This will now run for as long as needed to remove everything.
 
 ## TL;DR
-
 - Get your data archive from https://www.reddit.com/settings/data-request
 - Put it in https://redact.dev/
 - Configure and launch deletion
