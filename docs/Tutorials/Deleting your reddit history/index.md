@@ -10,18 +10,24 @@ tags: reddit, redact, privacy, spez, api
 
 ## Introduction
 
-The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limitation making you able to remove only the last 1000 messages that you made.
+The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limiting the removal at only the last 1000 messages that you made.
 
 ### Why?
 
 Reddit's business is based on using the data that you freely submit to it, to resell them to data aggregators and advertisers.
+
 It is merely good digital hygiene to remove data that you spread to the internet as much as possible, but it is also good, even better, as a protest mean against the API changes announced by Reddit, than a subreddit blackout.
 
 While a subreddit blackout can negatively impact Reddit's image, it's only temporary, and the mods that trigger the blackouts can be removed and replaced on a whim.
 
-This is not the case for your data, and the data that makes these subreddits.
+This is not the case for your data, and the data that build these subreddits. 
+
+Removing your data removes what Reddit can sell out to third parties, and lower the data that Reddit has to manages through its APIs, lowering their technical costs.
+
+It's a win/win scenario! !>/s<!
 
 ### Will this kill my karma?
+
 No. The karma stays.
 
 ### Is it irreversible?
