@@ -10,7 +10,7 @@ tags: reddit, redact, privacy, spez, api
 
 ## Introduction
 
-The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limiting the removal at only the last 1000 messages that you made.
+The following tutorial aims at making you able to delete your Reddit history, partially or entirely, while bypassing the Reddit's API limiting the removal at only the last 1000 messages that you made.
 
 ### Why?
 
@@ -40,34 +40,38 @@ You will still be in possession of your comment archive though, which makes you 
 
 So TL;DR, your data won't be lost, but won't be easily publishable.
 
-## Requesting your data from reddit
+## Requesting your data from Reddit
 
-The first step in removing your data, is actually getting it all from reddit.
+The first step in removing your data, is actually getting it all from Reddit.
 You can achieve this by making a request at the following page, while logged-in as the user you want the data of: [Request your reddit data](https://www.reddit.com/settings/data-request)
 
 You need to pick "General Data Protection Regulation (GDPR)" in the type of request to get the most exhaustive one.
 
 For the range of data, select "I want data from my full time at Reddit".
 
-This is done asynchronously and you will need to check your reddit messages until you receive the download link.
+This is done asynchronously and you will need to check your Reddit messages until you receive the download link.
+
 Note that it can only done once per 30 days.
 
 ## Using your data dump to remove your history
 
-Once you got your data archive from reddit, you'll be in the possession of the full list of messages that you ever wrote, far beyond the 1000 entries that you could have fetched through the API.
+Once you got your data archive from Reddit, you'll be in the possession of the full list of messages that you ever wrote, far beyond the 1000 entries that you could have fetched through the API.
 
 From there, you can either build a tool that will delete the comment from the API based on the ID of each of the comments in the dump, or use a tool that has already made it easy.
 
-For my own use, I use the tool called redact, [available on their website](https://redact.dev/)
-Disclaimer: I am not affiliated with redact nor do I receive anything from them for advertising their tool.
+For my own use, I use the tool called Redact, [available on their website](https://redact.dev/)
+
+**Disclaimer**: I am not affiliated with redact nor do I receive anything from them for advertising their tool.
 
 Note that Redact is free, but is not open-source, so use at your own risks. 
 
-Why Redact? Because it has the useful feature of being able to take the archive sent by reddit directly as input to clear your reddit account. It's also available on all the existing OS that I can think of, so no matter if you want to do it by phone, from windows, mac or linux, a client is available.
+Why Redact? 
 
-### Setting up the reddit removal service
+Because it has the useful feature of being able to take the archive sent by Reddit directly as input to clear your Reddit account. It's also available on all the existing OS that I can think of, so no matter if you want to do it by phone, from windows, mac or Linux, a client is available.
 
-Pick the reddit service and click on "Add account". This will bring the login page where you need to log-in to the account you want to delete data from.
+### Setting up the Reddit removal service
+
+Pick the Reddit service and click on "Add account". This will bring the login page where you need to log-in to the account you want to delete data from.
 
 ![[Screenshot_787.png]]
 
@@ -141,7 +145,13 @@ This will now run for as long as needed to remove everything.
 ## TL;DR
 
 Get your data archive from https://www.reddit.com/settings/data-request
+
 Put it in https://redact.dev/
+
 Configure and launch deletion
+
 ???
-~~Fuck Spez~~ Profit
+
+~~Fuck Spez~~ 
+
+Profit
