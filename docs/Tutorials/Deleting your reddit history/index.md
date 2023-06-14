@@ -130,8 +130,9 @@ And accept that Redact will not be responsible if you deleted the secret nuclear
 This will now run for as long as needed to remove everything.
 
 ## TL;DR
-- Get your data archive from https://www.reddit.com/settings/data-request
-- Put it in https://redact.dev/
-- Configure and launch deletion
-- ???
--  ~~Fuck Spez~~ Profit
+
+Get your data archive from https://www.reddit.com/settings/data-request
+Put it in https://redact.dev/
+Configure and launch deletion
+???
+~~Fuck Spez~~ Profit
