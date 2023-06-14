@@ -155,3 +155,5 @@ Configure and launch deletion
 ~~Fuck Spez~~ 
 
 Profit
+
+> [This tutorial is also available on my github pages, in case of removal](https://0xanansi.github.io/wiki/Tutorials/Deleting%20your%20reddit%20history/)
