@@ -1,8 +1,9 @@
-# Introduction
+# How to delete your reddit history
+## Introduction
 
 The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limitation making you able to remove only the last 1000 messages that you made.
 
-## Why?
+### Why?
 
 Reddit's business is based on using the data that you freely submit to it, to resell them to data aggregators and advertisers.
 It is merely good digital hygiene to remove data that you spread to the internet as much as possible, but it is also good, even better, as a protest mean against the API changes announced by Reddit, than a subreddit blackout.
@@ -11,10 +12,10 @@ While a subreddit blackout can negatively impact Reddit's image, it's only tempo
 
 This is not the case for your data, and the data that makes these subreddits.
 
-## Will this kill my karma?
+### Will this kill my karma?
 No. The karma stays.
 
-## Is it irreversible?
+### Is it irreversible?
 
 Yes and no. 
 
@@ -24,7 +25,7 @@ You will still be in possession of your comment archive though, which makes you 
 
 So TL;DR, your data won't be lost, but won't be easily publishable.
 
-# Requesting your data from reddit
+## Requesting your data from reddit
 
 The first step in removing your data, is actually getting it all from reddit.
 You can achieve this by making a request at the following page, while logged-in as the user you want the data of: [Request your reddit data](https://www.reddit.com/settings/data-request)
@@ -36,7 +37,7 @@ For the range of data, select "I want data from my full time at Reddit".
 This is done asynchronously and you will need to check your reddit messages until you receive the download link.
 Note that it can only done once per 30 days.
 
-# Using your data dump to remove your history
+## Using your data dump to remove your history
 
 Once you got your data archive from reddit, you'll be in the possession of the full list of messages that you ever wrote, far beyond the 1000 entries that you could have fetched through the API.
 
@@ -49,7 +50,7 @@ Note that Redact is free, but is not open-source, so use at your own risks.
 
 Why Redact? Because it has the useful feature of being able to take the archive sent by reddit directly as input to clear your reddit account. It's also available on all the existing OS that I can think of, so no matter if you want to do it by phone, from windows, mac or linux, a client is available.
 
-## Configuring the reddit removal service
+### Configuring the reddit removal service
 Pick the reddit service and click on "Add account". This will bring the login page where you need to log-in to the account you want to delete data from.
 
 ![[Screenshot_787.png]]
@@ -60,7 +61,7 @@ Once logged-in, you will need to authorize Redact to access your data through yo
 
 And that's it!
 
-# Starting the removal of your data
+## Starting the removal of your data
 
 You have a lot of option concerning the time period you want your data deleted.
 ![[Pasted image 20230614165306.png]]
