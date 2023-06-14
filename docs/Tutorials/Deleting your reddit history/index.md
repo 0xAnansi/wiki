@@ -1,3 +1,11 @@
+---
+title: How to delete your reddit history?
+summary: The following tutorial aims at making you able to delete your reddit history, partially or entirely, while bypassing the reddit's API limitation making you able to remove only the last 1000 messages that you made.
+authors: A. Nansi
+date: 2023-06-14
+tags: reddit, redact, privacy, spez, api
+---
+
 # How to delete your reddit history
 ## Introduction
 
