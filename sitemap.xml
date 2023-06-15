@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://0xanansi.github.io/wiki/</loc>
+         <lastmod>2023-06-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://0xanansi.github.io/wiki/Tutorials/Deleting%20your%20reddit%20history/</loc>
+         <lastmod>2023-06-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://0xanansi.github.io/wiki/Tutorials/Hosting%20a%20python%20bot%20on%20a%20VPS/</loc>
+         <lastmod>2023-06-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

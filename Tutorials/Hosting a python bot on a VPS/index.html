@@ -1,0 +1,873 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://0xanansi.github.io/wiki/Tutorials/Hosting%20a%20python%20bot%20on%20a%20VPS/">
+      
+      
+        <link rel="prev" href="../Deleting%20your%20reddit%20history/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Hosting a python bot on a VPS - Anansi's web of tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hosting-a-python-bot-on-a-vps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Anansi&#39;s web of tutorials" class="md-header__button md-logo" aria-label="Anansi's web of tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anansi's web of tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hosting a python bot on a VPS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Anansi&#39;s web of tutorials" class="md-nav__button md-logo" aria-label="Anansi's web of tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Anansi's web of tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home of Anansi's web of tutorials
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Deleting%20your%20reddit%20history/">Deleting your reddit history</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Deleting your reddit history
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">Hosting a python bot on a VPS</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Hosting a python bot on a VPS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-linux-commands-helps-and-references" class="md-nav__link">
+    A few Linux commands, helps and references
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-host" class="md-nav__link">
+    Preparing the host
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-to-the-host-with-the-provided-account" class="md-nav__link">
+    Connect to the host with the provided account
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect to the host with the provided account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-mac" class="md-nav__link">
+    Linux &amp; Mac
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-host" class="md-nav__link">
+    Update the host
+  </a>
+  
+    <nav class="md-nav" aria-label="Update the host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-less-privileged-user" class="md-nav__link">
+    Create a less privileged user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-new-account" class="md-nav__link">
+    Testing the new account
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-the-software" class="md-nav__link">
+    Install the software
+  </a>
+  
+    <nav class="md-nav" aria-label="Install the software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-the-python-environment-manager" class="md-nav__link">
+    Install the python environment manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-a-script" class="md-nav__link">
+    Install a script
+  </a>
+  
+    <nav class="md-nav" aria-label="Install a script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transfer-your-script-to-the-host" class="md-nav__link">
+    Transfer your script to the host
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-a-script" class="md-nav__link">
+    Setting up a script
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up a script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-virtual-environment" class="md-nav__link">
+    Setting up the virtual environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-actual-script" class="md-nav__link">
+    Setting up the actual script
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-script-in-background" class="md-nav__link">
+    Running the script in background
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="hosting-a-python-bot-on-a-vps">Hosting a python bot on a VPS<a class="headerlink" href="#hosting-a-python-bot-on-a-vps" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>To be able to follow this tutorial, you will need:</p>
+<ul>
+<li>A hosting provider (VPS, dedicated server, raspi in your local network, etc.)</li>
+<li>Remote access to a host</li>
+<li>Root access to a host</li>
+<li>A script to run</li>
+<li>To be able to connect to the host, you will need a SSH client. For Linux and Mac, it's native. For Windows, there are several alternatives, the most popular being <a href="https://putty.org/">https://putty.org/</a>. A good solution, for ease of use, is to use a terminal manager such as <a href="https://mremoteng.org/">https://mremoteng.org/</a> (open source).</li>
+<li>A SFTP client, optional, if your code is not in a git repo (<a href="https://filezilla-project.org/download.php?type=clientis">https://filezilla-project.org/download.php?type=clientis</a> crossplatform for example)</li>
+</ul>
+<p>In the following tutorial, the following variables will be used:</p>
+<ul>
+<li>[root_user] : the root user initially provided by your hosting provider</li>
+<li>[sudo_account] : the user you created following the tutorial</li>
+<li>[server_ip] : the IP of your server</li>
+</ul>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<p>This tutorial will consider that the host is provided with a debian or debian based distribution.</p>
+<h2 id="a-few-linux-commands-helps-and-references">A few Linux commands, helps and references<a class="headerlink" href="#a-few-linux-commands-helps-and-references" title="Permanent link">&para;</a></h2>
+<p>A QWERTY layout:</p>
+<p><img alt="Pasted image 20230510215028.png" src="Pasted%20image%2020230510215028.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>Current directory</td>
+</tr>
+<tr>
+<td>..</td>
+<td>Previous directory</td>
+</tr>
+<tr>
+<td>~</td>
+<td>Home directory (/home/[your_current_user])</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Ctrl key (^X is ctrl+x for example)</td>
+</tr>
+<tr>
+<td>M or Meta</td>
+<td>Alt key (M-U is Alt+U for example)</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>The beginning of a command line</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd</td>
+<td>Change directory</td>
+<td><code>cd ~/scripts</code></td>
+</tr>
+<tr>
+<td>ls -l</td>
+<td>List content of directory as list</td>
+<td><code>ls -l .</code></td>
+</tr>
+<tr>
+<td>cat</td>
+<td>Display the whole content of a file</td>
+<td><code>cat ./main.py</code></td>
+</tr>
+<tr>
+<td>tail -n 250</td>
+<td>Display the last 250 lines of a file (useful to check logs)</td>
+<td><code>tail -n 250 ./output.log</code></td>
+</tr>
+<tr>
+<td>nano</td>
+<td>Edit a file</td>
+<td><code>nano ./main.py</code></td>
+</tr>
+<tr>
+<td>nohup</td>
+<td>Run a command without needing a shell</td>
+<td><code>nohup ./main.py</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="preparing-the-host">Preparing the host<a class="headerlink" href="#preparing-the-host" title="Permanent link">&para;</a></h2>
+<h3 id="connect-to-the-host-with-the-provided-account">Connect to the host with the provided account<a class="headerlink" href="#connect-to-the-host-with-the-provided-account" title="Permanent link">&para;</a></h3>
+<h4 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<p>TBD, but do the same thing as below using your client of choice pretty much</p>
+<h4 id="linux-mac">Linux &amp; Mac<a class="headerlink" href="#linux-mac" title="Permanent link">&para;</a></h4>
+<p>Open a terminal and type the following command:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span><span class="o">[</span>root_user<span class="o">]</span>@<span class="o">[</span>server_ip<span class="o">]</span>
+</code></pre></div>
+<p>This should ask for your password, that you will have to enter, or paste (be careful, ctrl+v is not often supported in terminals. You might have to use the middle click, or right click)</p>
+<p><img alt="Pasted image 20230510195235.png" src="Pasted%20image%2020230510195235.png" /></p>
+<p>If everything goes right, you will be greeted by what is called a banner.
+Below that, you'll have access to your server's shell (which might not look like the screenshot, but the idea is there)</p>
+<p><img alt="Pasted image 20230510195152.png" src="Pasted%20image%2020230510195152.png" /></p>
+<h3 id="update-the-host">Update the host<a class="headerlink" href="#update-the-host" title="Permanent link">&para;</a></h3>
+<p>Before anything, we'll ensure that the host is up to date.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+<p>An example of an output:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade
+Hit:1<span class="w"> </span>http://download.draios.com/stable/deb<span class="w"> </span>stable-amd64/<span class="w"> </span>InRelease
+Hit:2<span class="w"> </span>http://mirrors.linode.com/debian<span class="w"> </span>bullseye<span class="w"> </span>InRelease
+Get:3<span class="w"> </span>http://mirrors.linode.com/debian-security<span class="w"> </span>bullseye-security/updates<span class="w"> </span>InRelease<span class="w"> </span><span class="o">[</span><span class="m">48</span>.4<span class="w"> </span>kB<span class="o">]</span>
+Get:4<span class="w"> </span>http://mirrors.linode.com/debian<span class="w"> </span>bullseye-updates<span class="w"> </span>InRelease<span class="w"> </span><span class="o">[</span><span class="m">44</span>.1<span class="w"> </span>kB<span class="o">]</span>
+Get:5<span class="w"> </span>http://mirrors.linode.com/debian-security<span class="w"> </span>bullseye-security/updates/main<span class="w"> </span>Sources<span class="w"> </span><span class="o">[</span><span class="m">190</span><span class="w"> </span>kB<span class="o">]</span>
+Get:6<span class="w"> </span>http://mirrors.linode.com/debian-security<span class="w"> </span>bullseye-security/updates/main<span class="w"> </span>amd64<span class="w"> </span>Packages<span class="w"> </span><span class="o">[</span><span class="m">239</span><span class="w"> </span>kB<span class="o">]</span>
+Fetched<span class="w"> </span><span class="m">521</span><span class="w"> </span>kB<span class="w"> </span><span class="k">in</span><span class="w"> </span>4s<span class="w"> </span><span class="o">(</span><span class="m">138</span><span class="w"> </span>kB/s<span class="o">)</span>
+Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
+Building<span class="w"> </span>dependency<span class="w"> </span>tree...<span class="w"> </span>Done
+Reading<span class="w"> </span>state<span class="w"> </span>information...<span class="w"> </span>Done
+All<span class="w"> </span>packages<span class="w"> </span>are<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date.
+Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
+Building<span class="w"> </span>dependency<span class="w"> </span>tree...<span class="w"> </span>Done
+Reading<span class="w"> </span>state<span class="w"> </span>information...<span class="w"> </span>Done
+Calculating<span class="w"> </span>upgrade...<span class="w"> </span>Done
+The<span class="w"> </span>following<span class="w"> </span>packages<span class="w"> </span>were<span class="w"> </span>automatically<span class="w"> </span>installed<span class="w"> </span>and<span class="w"> </span>are<span class="w"> </span>no<span class="w"> </span>longer<span class="w"> </span>required:
+<span class="w">    </span>apache2-bin<span class="w"> </span>apache2-data<span class="w"> </span>apache2-utils<span class="w"> </span>bind9utils<span class="w"> </span>bsdmainutils<span class="w"> </span>cpp-8<span class="w"> </span>dh-python<span class="w"> </span>g++-6<span class="w"> </span>gconf-service<span class="w"> </span>gconf2-common<span class="w"> </span>imagemagick-6-common<span class="w"> </span>libaom0<span class="w"> </span>libapr1<span class="w"> </span>libaprutil1<span class="w"> </span>libaprutil1-dbd-sqlite3<span class="w"> </span>libaprutil1-ldap<span class="w"> </span>libasan5<span class="w"> </span>libb64-0d<span class="w"> </span>libbabeltrace-ctf1<span class="w"> </span>libbind9-140<span class="w"> </span>libbind9-161
+<span class="w">    </span>libblas-common<span class="w"> </span>libboost-filesystem1.62.0<span class="w"> </span>libboost-iostreams1.62.0<span class="w"> </span>libboost-iostreams1.67.0<span class="w"> </span>libboost-system1.62.0<span class="w"> </span>libboost-system1.67.0<span class="w"> </span>libcroco3<span class="w"> </span>libcwidget3v5<span class="w"> </span>libdav1d4<span class="w"> </span>libdbus-glib-1-2<span class="w"> </span>libde265-0<span class="w"> </span>libdns-export1104<span class="w"> </span>libdns1104<span class="w"> </span>libdns1110<span class="w"> </span>libdns162<span class="w"> </span>libegl-mesa0<span class="w"> </span>libegl1
+<span class="w">    </span>libegl1-mesa<span class="w"> </span>libevent-2.1-6<span class="w"> </span>libfftw3-double3<span class="w"> </span>libgbm1<span class="w"> </span>libgconf-2-4<span class="w"> </span>libgdk-pixbuf-xlib-2.0-0<span class="w"> </span>libgdk-pixbuf2.0-0<span class="w"> </span>libgfortran3<span class="w"> </span>libgfortran5<span class="w"> </span>libheif1<span class="w"> </span>libicu57<span class="w"> </span>libicu63<span class="w"> </span>libirs141<span class="w"> </span>libirs161<span class="w"> </span>libisc-export1100<span class="w"> </span>libisc1100<span class="w"> </span>libisc1105<span class="w"> </span>libisc160<span class="w"> </span>libisccc140<span class="w"> </span>libisccc161<span class="w"> </span>libisccfg140
+<span class="w">    </span>libisccfg163<span class="w"> </span>libisl19<span class="w"> </span>libjemalloc1<span class="w"> </span>libjq1<span class="w"> </span>libjson-c3<span class="w"> </span>libjsoncpp1<span class="w"> </span>liblinear3<span class="w"> </span>libllvm7<span class="w"> </span>liblockfile-bin<span class="w"> </span>liblockfile1<span class="w"> </span>liblqr-1-0<span class="w"> </span>libltdl7<span class="w"> </span>liblua5.2-0<span class="w"> </span>libluajit-5.1-2<span class="w"> </span>libluajit-5.1-common<span class="w"> </span>liblvm2app2.2<span class="w"> </span>liblvm2cmd2.02<span class="w"> </span>liblwres141<span class="w"> </span>liblwres161<span class="w"> </span>libmagickcore-6.q16-3
+<span class="w">    </span>libmagickcore-6.q16-6<span class="w"> </span>libmagickwand-6.q16-3<span class="w"> </span>libmagickwand-6.q16-6<span class="w"> </span>libmpdec2<span class="w"> </span>libonig4<span class="w"> </span>libonig5<span class="w"> </span>libopenjp2-7<span class="w"> </span>libperl5.28<span class="w"> </span>libprocps7<span class="w"> </span>libpython2-dev<span class="w"> </span>libpython2-stdlib<span class="w"> </span>libpython2.7<span class="w"> </span>libpython2.7-dev<span class="w"> </span>libpython2.7-minimal<span class="w"> </span>libpython2.7-stdlib<span class="w"> </span>libpython3.5<span class="w"> </span>libpython3.5-dev
+<span class="w">    </span>libpython3.5-minimal<span class="w"> </span>libpython3.5-stdlib<span class="w"> </span>libpython3.7<span class="w"> </span>libpython3.7-dev<span class="w"> </span>libpython3.7-minimal<span class="w"> </span>libpython3.7-stdlib<span class="w"> </span>libreadline5<span class="w"> </span>libruby2.3<span class="w"> </span>libruby2.5<span class="w"> </span>libstdc++-6-dev<span class="w"> </span>libtinfo-dev<span class="w"> </span>libunbound2<span class="w"> </span>libwayland-egl1-mesa<span class="w"> </span>libwayland-server0<span class="w"> </span>libwebpdemux2<span class="w"> </span>libwebpmux3<span class="w"> </span>libx265-165<span class="w"> </span>libx265-192
+<span class="w">    </span>linux-headers-4.19.0-16-common<span class="w"> </span>linux-headers-4.19.0-17-common<span class="w"> </span>linux-headers-4.19.0-21-common<span class="w"> </span>linux-headers-4.19.0-22-common<span class="w"> </span>linux-headers-4.19.0-6-common<span class="w"> </span>linux-headers-4.9.0-11-amd64<span class="w"> </span>linux-headers-4.9.0-11-common<span class="w"> </span>linux-headers-4.9.0-8-amd64<span class="w"> </span>linux-headers-4.9.0-8-common
+<span class="w">    </span>linux-headers-5.10.0-19-amd64<span class="w"> </span>linux-headers-5.10.0-19-common<span class="w"> </span>linux-image-4.19.0-16-amd64<span class="w"> </span>linux-image-4.19.0-17-amd64<span class="w"> </span>linux-image-4.19.0-21-amd64<span class="w"> </span>linux-image-4.19.0-22-amd64<span class="w"> </span>linux-image-4.19.0-6-amd64<span class="w"> </span>linux-image-4.9.0-11-amd64<span class="w"> </span>linux-image-4.9.0-8-amd64
+<span class="w">    </span>linux-image-5.10.0-19-amd64<span class="w"> </span>linux-kbuild-4.19<span class="w"> </span>netcat-traditional<span class="w"> </span>perl-modules-5.28<span class="w"> </span>php-common<span class="w"> </span>python-pkg-resources<span class="w"> </span>python2<span class="w"> </span>python2-dev<span class="w"> </span>python2-minimal<span class="w"> </span>python2.7<span class="w"> </span>python2.7-dev<span class="w"> </span>python2.7-minimal<span class="w"> </span>python3.5<span class="w"> </span>python3.5-dev<span class="w"> </span>python3.5-minimal<span class="w"> </span>python3.7-minimal<span class="w"> </span>ruby-did-you-mean<span class="w"> </span>ruby2.3
+<span class="w">    </span>x11proto-input-dev<span class="w"> </span>x11proto-kb-dev
+Use<span class="w"> </span><span class="s1">&#39;sudo apt autoremove&#39;</span><span class="w"> </span>to<span class="w"> </span>remove<span class="w"> </span>them.
+<span class="m">0</span><span class="w"> </span>upgraded,<span class="w"> </span><span class="m">0</span><span class="w"> </span>newly<span class="w"> </span>installed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>remove<span class="w"> </span>and<span class="w"> </span><span class="m">0</span><span class="w"> </span>not<span class="w"> </span>upgraded.
+</code></pre></div>
+<h4 id="create-a-less-privileged-user">Create a less privileged user<a class="headerlink" href="#create-a-less-privileged-user" title="Permanent link">&para;</a></h4>
+<p>Since connecting using a root account is a <em>very bad practice</em>, we will be creating a user account that you will use for the rest of the tutorial.</p>
+<p>Run the following command to create a new user:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>adduser<span class="w"> </span><span class="o">[</span>sudo_user<span class="o">]</span>
+</code></pre></div>
+<p>This should ask you for a password, be aware that this will most likely be using QWERTY layout. Set up a password with at least 12 characters, using a mix of uppercase, lowercase, special characters and number.
+I would <strong>highly</strong> advise that you use a password manager both to save and to generate your passwords.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>adduser<span class="w"> </span><span class="o">[</span>sudo_user<span class="o">]</span>
+Adding<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;[sudo_user]&#39;</span><span class="w"> </span>...
+Adding<span class="w"> </span>new<span class="w"> </span>group<span class="w"> </span><span class="s1">&#39;[sudo_user]&#39;</span><span class="w"> </span><span class="o">(</span><span class="m">1001</span><span class="o">)</span><span class="w"> </span>...
+Adding<span class="w"> </span>new<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;[sudo_user]&#39;</span><span class="w"> </span><span class="o">(</span><span class="m">1001</span><span class="o">)</span><span class="w"> </span>with<span class="w"> </span>group<span class="w"> </span><span class="s1">&#39;[sudo_user]&#39;</span><span class="w"> </span>...
+Creating<span class="w"> </span>home<span class="w"> </span>directory<span class="w"> </span><span class="s1">&#39;/home/[sudo_user]&#39;</span><span class="w"> </span>...
+Copying<span class="w"> </span>files<span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;/etc/skel&#39;</span><span class="w"> </span>...
+Enter<span class="w"> </span>new<span class="w"> </span>UNIX<span class="w"> </span>password:<span class="w"> </span>******
+Retype<span class="w"> </span>new<span class="w"> </span>UNIX<span class="w"> </span>password:<span class="w"> </span>******
+</code></pre></div>
+<p>If you want to change the password for the user afterwards, you can use the following command:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>passwd<span class="w"> </span><span class="o">[</span>sudo_user<span class="o">]</span>
+Enter<span class="w"> </span>new<span class="w"> </span>UNIX<span class="w"> </span>password:<span class="w"> </span>******
+Retype<span class="w"> </span>new<span class="w"> </span>UNIX<span class="w"> </span>password:<span class="w"> </span>******
+</code></pre></div>
+<p>While we want the user to be less privileged by default, we still want to be able to run privileged commands on demand, so we need to add this user to the group 'sudo'.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span><span class="o">[</span>sudo_user<span class="o">]</span>
+</code></pre></div>
+<p>This should be enough to allow ssh connections.</p>
+<h3 id="testing-the-new-account">Testing the new account<a class="headerlink" href="#testing-the-new-account" title="Permanent link">&para;</a></h3>
+<p>Repeat the chapter <a href="#connect-to-the-host-with-the-provided-account">#Connect to the host with the provided account</a> using the new account information.</p>
+<p>If everything is ok, disconnect from the previous ssh session that is using [root_user] by typing in the console:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+<h2 id="install-the-software">Install the software<a class="headerlink" href="#install-the-software" title="Permanent link">&para;</a></h2>
+<h3 id="install-the-python-environment-manager">Install the python environment manager<a class="headerlink" href="#install-the-python-environment-manager" title="Permanent link">&para;</a></h3>
+<p>Because python is a clusterfuck and to avoid bricking the system, we will be using a virtual environment manager for python, that will make you able to have a dedicated version of python for each script that you use. </p>
+<p>That avoids conflicts, and makes everything smoother in the long run.</p>
+<p>Start by installing the prerequisites:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>make<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span><span class="se">\</span>
+libbz2-dev<span class="w"> </span>libreadline-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>wget<span class="w"> </span>curl<span class="w"> </span>llvm<span class="w"> </span>libncurses5-dev<span class="w"> </span><span class="se">\</span>
+libncursesw5-dev<span class="w"> </span>xz-utils<span class="w"> </span>tk-dev<span class="w"> </span>libffi-dev<span class="w"> </span>liblzma-dev<span class="w"> </span>python-openssl
+</code></pre></div>
+<p>Then install pyenv itself:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://pyenv.run<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div>
+<p>At the end of the install, you should see something like:</p>
+<div class="highlight"><pre><span></span><code>WARNING:<span class="w"> </span>seems<span class="w"> </span>you<span class="w"> </span>still<span class="w"> </span>have<span class="w"> </span>not<span class="w"> </span>added<span class="w"> </span><span class="s1">&#39;pyenv&#39;</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>load<span class="w"> </span>path.
+
+Load<span class="w"> </span>pyenv<span class="w"> </span>automatically<span class="w"> </span>by<span class="w"> </span>adding
+the<span class="w"> </span>following<span class="w"> </span>to<span class="w"> </span>~/.bashrc:
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.pyenv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>pyenv<span class="w"> </span>virtualenv-init<span class="w"> </span>-<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Run the following commands to add pyenv to your path, as the warning above asks you to do:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+$<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SHELL</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Update pyenv by running:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyenv<span class="w"> </span>update
+</code></pre></div>
+<p>Create the working directory where you'll upload your scripts:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>~/scripts
+</code></pre></div>
+<h3 id="install-a-script">Install a script<a class="headerlink" href="#install-a-script" title="Permanent link">&para;</a></h3>
+<h4 id="transfer-your-script-to-the-host">Transfer your script to the host<a class="headerlink" href="#transfer-your-script-to-the-host" title="Permanent link">&para;</a></h4>
+<p>If you're using a git repository, I will consider that you know how to clone a repo.
+This part is for people that have the code on their computer and need to transfer it to the host.</p>
+<p>For this, you will need to use your SFTP client, setup as follow:</p>
+<ul>
+<li>Host: sftp://[server_ip]</li>
+<li>Username: [sudo_user]</li>
+<li>Password: [sudo_user_password]</li>
+<li>Port: 22</li>
+</ul>
+<p>If something asks you if you trust this host, say yes.</p>
+<p>If you use Filezilla, it'll look something like:</p>
+<p><img alt="Pasted image 20230510204111.png" src="Pasted%20image%2020230510204111.png" /></p>
+<p>On the left side, you'll see your computer's content, on the right side, you'll see the server.</p>
+<p>Transfer your scripts into separate folders on the server, in the /home/[sudo_user]/scripts/MyBot directory that was created earlier (you can drag and drop).</p>
+<h4 id="setting-up-a-script">Setting up a script<a class="headerlink" href="#setting-up-a-script" title="Permanent link">&para;</a></h4>
+<h5 id="setting-up-the-virtual-environment">Setting up the virtual environment<a class="headerlink" href="#setting-up-the-virtual-environment" title="Permanent link">&para;</a></h5>
+<p>For better comprehension, the following part will consider that your script is in the <em>/home/user/scripts/MyBot</em> directory, and has a starting point in the file <em>main.py</em></p>
+<p>Enter the working directory:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/<span class="o">[</span>sudo_user<span class="o">]</span>/scripts/MyBot
+</code></pre></div>
+<p>Install a local python environment (you can change the version if you need a specific one, I'll use the latest stable at the time of writting this tutorial):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.11.3
+$<span class="w"> </span>pyenv<span class="w"> </span>virtualenv<span class="w"> </span><span class="m">3</span>.11.3<span class="w"> </span>venv_MyBot<span class="w"> </span><span class="c1"># replace the MyBot name by the name of your script/bot</span>
+</code></pre></div>
+<p>Then, activate the virtual env</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pyenv<span class="w"> </span>activate<span class="w"> </span>venv_MyBot<span class="w"> </span><span class="c1"># replace the MyBot name by the name of your script/bot </span>
+</code></pre></div>
+<p>You should see something like <em>(venv_MyBot)</em> preceding your shell, which mean that you're using the newly created virtual environment.</p>
+<p>For example, on my specific shell (which is customized), it looks like:</p>
+<p><img alt="Pasted image 20230510210539.png" src="Pasted%20image%2020230510210539.png" /></p>
+<h5 id="setting-up-the-actual-script">Setting up the actual script<a class="headerlink" href="#setting-up-the-actual-script" title="Permanent link">&para;</a></h5>
+<p>Now, you should be able to run your script! (maybe)</p>
+<p>Run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv_MyBot<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python3<span class="w"> </span>./main.py
+</code></pre></div>
+<p>If there is no error, nice, it's almost done and you can skip the rest of this specific chapter.
+If not, you'll most likely be missing some dependencies, with a message looking like:</p>
+<div class="highlight"><pre><span></span><code>ModuleNotFoundError:<span class="w"> </span>No<span class="w"> </span>module<span class="w"> </span>named<span class="w"> </span><span class="s1">&#39;schedule&#39;</span>
+</code></pre></div>
+<p>It means that you need to install the module named "schedule" in this case.</p>
+<p>To install it, run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv_MyBot<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>schedule
+Collecting<span class="w"> </span>schedule<span class="w">  </span>
+<span class="w">    </span>Using<span class="w"> </span>cached<span class="w"> </span>schedule-1.2.0-py2.py3-none-any.whl<span class="w"> </span><span class="o">(</span><span class="m">11</span><span class="w"> </span>kB<span class="o">)</span><span class="w">  </span>
+Installing<span class="w"> </span>collected<span class="w"> </span>packages:<span class="w"> </span>schedule<span class="w">  </span>
+Successfully<span class="w"> </span>installed<span class="w"> </span>schedule-1.2.0<span class="w">  </span>
+WARNING:<span class="w"> </span>You<span class="w"> </span>are<span class="w"> </span>using<span class="w"> </span>pip<span class="w"> </span>version<span class="w"> </span><span class="m">22</span>.0.4<span class="p">;</span><span class="w"> </span>however,<span class="w"> </span>version<span class="w"> </span><span class="m">23</span>.1.2<span class="w"> </span>is<span class="w"> </span>available.<span class="w">  </span>
+You<span class="w"> </span>should<span class="w"> </span>consider<span class="w"> </span>upgrading<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="s1">&#39;/home/user1/.pyenv/versions/3.10.4/envs/MyBot/bin/python3.10 -m pip install --upgrade pip&#39;</span><span class="w"> </span>command.
+</code></pre></div>
+<p>Then, retry running the script, and rinse and repeat until it works.
+Once it does, run the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv_MyBot<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip3<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p>While not mandatory, this will make you able to reinstall the script with a single command the next time.</p>
+<p>The command to install from the requirements.txt is, for information (don't need to run this now, since everything is already installed):</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv_MyBot<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<h3 id="running-the-script-in-background">Running the script in background<a class="headerlink" href="#running-the-script-in-background" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Make sure that you have activated the virtual env before running the command below, especially after connecting in a new session.
+</p>
+</blockquote>
+<p>While the script is running good when you start it manually, it will stop when you close your terminal, which we do not want.</p>
+<p>To be able to keep the script running when you leave the server, you will need to use the <em>nohup</em> command.</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv_MyBot<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>nohup<span class="w"> </span>python3<span class="w"> </span>./main.py<span class="w"> </span>&gt;<span class="w"> </span>output.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>The command above uses nohup to tell the shell to run the command in a separate process, and redirects its output to a log file named output.log, that you can read to see if everything is working as intended, or if any error was generated.</p>
+<p>After running the command, you can directly press "Enter" to check if it didn't instantly fail for some reason. Most of the time, it fails because you forgot to activate the python virtual environment.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
