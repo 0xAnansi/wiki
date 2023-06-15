@@ -101,17 +101,24 @@ You have then a plethora of options to better configure what you want to delete,
 
 ![[Pasted image 20230614165708.png]]
 
-In the section "Action to take", pick "Edit comments". This will edit with garbage texte, then remove the comment, which is supposed to make the original comment unrecoverable (this might not be true, but this is why it's there so better try)
+In the section "Action to take", pick "Edit comments". This will edit with garbage text, which is supposed to make the original comment unrecoverable (this might not be true, but this is why it's there so better try)
+
+Note that if you want to actually remove your comments, you'll need to re-run this a second time and select "Delete".
 
 ![[Pasted image 20230614165845.png]]
 
 In "Custom Edit Text" you can enter what you want your comment to be replaced with if random text is not to your liking.
 
 You can use any of the community approved ones such as, but not limited to:
+
 - Fuck Spez
+
 - Due to the changes in the API limitations and access, this comment has been removed from reddit
+
 - Removed for privacy
+
 - Deez nutz
+
 - Etc.
 
 ![[Pasted image 20230614170055.png]]
